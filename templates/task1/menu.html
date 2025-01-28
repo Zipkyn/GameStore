@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <header>
+        <h1>{% block pagename %}Default Page{% endblock %}</h1>
+    </header>
+    <nav>
+        {% block menu %}
+        <ul>
+            <li><a href="/">Главная</a></li>
+            <li><a href="/games/">Магазин</a></li>
+            <li><a href="/cart/">Корзина</a></li>
+            <li><a href="/registration/">Регестрация</a></li>
+        </ul>
+        {% endblock %}
+    </nav>
+    <main>
+        {% block content %}
+        <p>Контент по умолчанию.</p>
+        {% endblock %}
+    </main>
+</body>
+</html>
+
+
