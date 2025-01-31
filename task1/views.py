@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from .forms import UserRegister
 from .models import Buyer
+from django.core.paginator import Paginator
+from .models import News
+
 
 def platform_view(request):
     return render(request, 'task1/platform.html')
@@ -61,6 +64,15 @@ def sign_up_by_django(request):
             info['message'] = f'Приветствуем, {username}!'
 
     return render(request, 'task1/registration_page.html', info)
+
+def news_view(request):
+    news_list = News.objects.all().order_by('-date')
+    paginator = Paginator(news_list, 5)
+
+    page_number = request.GET.get('page')
+    news = paginator.get_page(page_number)
+
+    return render(request, 'task1/news.html', {'news': news})
 
 
 
